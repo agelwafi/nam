@@ -70,11 +70,15 @@ class FoldedDataset(NAMDataset):
                 train,
                 batch_size=self.config.batch_size,
                 shuffle=shuffle,
+                pin_memory=True,
+                num_workers = self.config.num_workers,
             )
             valloader = DataLoader(
                 val,
                 batch_size=self.config.batch_size,
                 shuffle=False,
+                pin_memory=True,
+                num_workers = self.config.num_workers,
             )
 
             logger.info(f'Fold[{i + 1}]: train: {len(trainloader.dataset)}, val: {len(valloader.dataset)}')
